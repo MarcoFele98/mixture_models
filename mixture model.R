@@ -9,11 +9,11 @@ library(loo) # for waic()
 
 # Parameters ----
 parameters <- list(
-  number_obs = 10000,
+  number_obs = 100,
   p_cat_present = 0.25,
   p_cat_observed = 0.75,
-  song_rate_nocat = 10,
-  song_rate_cat = 9)
+  song_rate_nocat = 15,
+  song_rate_cat = 10)
 
 parameter_names <- c("p_cat_present", 
                      "p_cat_observed", 

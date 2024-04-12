@@ -44,23 +44,23 @@ model {
 generated quantities { // Generate quantities of interest from model
 
   // Posterior predictive simulations
-  // int<lower = 0, upper = 1> predictions_is_present_cat[number_obs]; // All variables declared here will be added to the output
-  // int<lower = 0, upper = 1> predictions_is_observed_cat[number_obs];
-  // int<lower = 0> predictions_songs[number_obs];
-  // 
-  // for(i in 1:number_obs) {
-  //   int is_present_cat = bernoulli_rng(p_cat_present); // this will not go in output bc defined inside {}
-  //   if(is_present_cat == 1) {
-  //     predictions_is_present_cat[i] = 1; // We can simulate "latent" (hidden - unknown stuff) as well!!
-  //     predictions_is_observed_cat[i] = bernoulli_rng(p_cat_observed);
-  //     predictions_songs[i] =  poisson_rng(song_rate_cat);
-  //   }
-  //   else {
-  //     predictions_is_present_cat[i] = 0; // We can simulate "latent" (hidden - unknown stuff) as well!!
-  //     predictions_is_observed_cat[i] = 0;
-  //     predictions_songs[i] = poisson_rng(song_rate_nocat);
-  //   }
-  // }
+  int<lower = 0, upper = 1> predictions_is_present_cat[number_obs]; // All variables declared here will be added to the output
+  int<lower = 0, upper = 1> predictions_is_observed_cat[number_obs];
+  int<lower = 0> predictions_songs[number_obs];
+
+  for(i in 1:number_obs) {
+    int is_present_cat = bernoulli_rng(p_cat_present); // this will not go in output bc defined inside {}
+    if(is_present_cat == 1) {
+      predictions_is_present_cat[i] = 1; // We can simulate "latent" (hidden - unknown stuff) as well!!
+      predictions_is_observed_cat[i] = bernoulli_rng(p_cat_observed);
+      predictions_songs[i] =  poisson_rng(song_rate_cat);
+    }
+    else {
+      predictions_is_present_cat[i] = 0; // We can simulate "latent" (hidden - unknown stuff) as well!!
+      predictions_is_observed_cat[i] = 0;
+      predictions_songs[i] = poisson_rng(song_rate_nocat);
+    }
+  }
   
   // Calculate likelihood for WAIC
   vector<upper = 0>[number_obs] data_log_lk;
