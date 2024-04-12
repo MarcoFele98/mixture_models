@@ -1,5 +1,5 @@
 # mixture_models
-Learning to code mixture models in STAN. This toy example comes from https://www.youtube.com/watch?v=oHWNexYPFTY&t=1247s. The awsome speaker presents the model but does not explain it (sneaky), so here is my attempt at explaining it. Despite it is very simple example, it captures all the steps required to fit mixture models in STAN and can be adapted for zero inflated Poisson regression or other custom mixture models. I also show how to make posterior predictve simulations and calculate model likelihood for WAIC and model comparison.
+This toy example comes from https://www.youtube.com/watch?v=oHWNexYPFTY&t=1247s. The speaker presents the model but does not explain it (sneaky), so here is my attempt at doing so. Despite it is a very simple example, it captures all the steps required to fit mixture models in STAN and can be adapted for zero inflated Poisson regression or other custom mixture models. I also show how to make posterior predictve simulations and calculate model likelihood for WAIC and model comparison.
 
 ## Background
 
