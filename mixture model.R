@@ -1,8 +1,6 @@
 # Mixture models in STAN
 
 library(cmdstanr)
-library(rstan)
-
 library(ggplot2)
 library(bayesplot) # for diagnostics and posterior
 library(loo) # for waic()
@@ -33,11 +31,12 @@ songs <- rpois(parameters$number_obs, parameters$song_rate_cat) * is_present_cat
 # Stan ----
 
 # Priors
-plot(seq(0, 1, l = 100), 
+plot(seq(0, 1, l = 100), # my domain specific knowledge about cats in gardens tells me that the cat is going to be present and I will be able to observe it at least once, and that it will not be present and I will not be able to observe it at least once
      dbeta(seq(0, 1, l = 100), 1.1, 1.1))
 
-plot(seq(0, 30, l = 100), 
+plot(seq(0, 30, l = 100), # never heard birds make more than 30 songs, this is a sensible prior
      dexp(seq(0, 30, l = 100), 0.05))
+# If priors bother you, do a sensitivity analysis: hopefully they will be washed away by the data and have little to not impact on inference
 
 # Data
 data_stan <- list(number_obs = parameters$number_obs, 
@@ -58,15 +57,7 @@ model_summary <- fit_model$summary()[fit_model$summary()$variable %in% parameter
 draws_parameters <- fit_model$draws(variables = parameter_names,
                                     format = "df") 
 
-# Plot posterior ----
-ggplot(draws_parameters) +
-  geom_histogram(aes(p_cat_present, 
-                     color = .chain, 
-                     group = .chain), 
-                 position = "identity",
-                 fill = NA) +
-  geom_vline(aes(xintercept = parameters$p_cat_present))
-
+# Plot
 ggplot(draws_parameters) +
   geom_histogram(aes(p_cat_observed, 
                      color = .chain, 

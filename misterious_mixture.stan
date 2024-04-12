@@ -15,7 +15,7 @@ parameters {
 model {
   // prios (the sampling statement "~" does not include priors in likelihood calculation)
   p_cat_present ~ beta(1.1, 1.1);
-  p_cat_present ~ beta(1.1, 1.1);
+  p_cat_observed ~ beta(1.1, 1.1);
   
   song_rate_cat ~ exponential(0.05);
   song_rate_nocat ~ exponential(0.05);
