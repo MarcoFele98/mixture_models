@@ -1,5 +1,5 @@
 # mixture_models
-This toy example comes from https://www.youtube.com/watch?v=oHWNexYPFTY&t=1247s. The seminar speaker presents the model but does not explain it, so here is my attempt at doing so. Despite it is a very simple toy example, it captures all the steps required to fit mixture models in STAN and can be adapted for zero inflated Poisson regression or other custom mixture models. I also show how to make posterior predictive simulations and calculate model likelihood for WAIC and model comparison.
+This toy example comes from https://www.youtube.com/watch?v=oHWNexYPFTY&t=1247s. The seminar speaker presents the model but does not explain it, so here is my attempt at doing so. Despite being a very simple toy example, it captures all the steps required to fit mixture models in STAN and can be adapted for zero inflated Poisson regression or other custom mixture models. I also show how to make posterior predictive simulations and calculate model likelihood for WAIC and model comparison.
 
 ## Background
 
